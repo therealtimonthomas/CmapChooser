@@ -2,15 +2,29 @@
 A python gui program to choose and play around with `matplotlib` colormaps and normalizations. 
 
 
-
 ## How To Install
-First, you have to download or clone this repository and then go into the folder that contains this file and the `setup.py` file. You can simply install the library via
+First, you have to download or clone this repository 
+```
+git clone https://github.com/therealtimonthomas/CmapChooser.git
+```
+and then go into the folder that contains this file and the `setup.py` file
+```
+cd CmapChooser
+```
+You can then simply install the library into your current python enviroment via
 
 ```bash
 pip3 install .
 ```
 
-which will ensure that the required libraries (`numpy`, `matplotlib`, and `PySide6`) are also present and aviable in your current python enviroment; if not they are installed automatically. Note that the `PySide6` pack is not super leightweight: it consumes ~600Mb disk space on my machine - so be aware of this if you are on a machine with tight quotas.
+which will ensure that the required libraries (`numpy`, `matplotlib`, and `PySide6`) are also present and aviable in your current python enviroment; if not they are installed automatically. Note that the `PySide6` pack is not super leightweight: it consumes ~600Mb disk space on my machine - be aware of this if you are on a machine with tight quotas.
+
+## Supported Colormaps
+
+The program  supports colormaps from `matplotlib`, `cmasher`, and `cmocean` currently. The later two are used if they are present in your python enviroment and are not automatically installed in the setup process. If you wish to use them (**---which I highly recommend---**), then simply run
+```bash
+pip3 install cmasher cmocean
+```
 
 ## How To Use
 
@@ -20,20 +34,20 @@ The envisioned workflow is that you have a 2d numpy-array (in the following this
 import cmap_chooser
 import h5py
 
-sn = h5py.File("image.hdf5", "r")
+sn = h5py.File("data/image.hdf5", "r")
 data = sn["image"][:,:]
 sn.close()
 
 cmap_chooser.choose(data)
 ```
 
-The same procedure can be used with the `np.load` function:
+The a similar code snippet can be used with the `numpy.load` function:
 
 ```python
 import cmap_chooser
 import numpy
 
-data = np.load("image.npy")
+data = numpy.load("data/image.npy")
 
 cmap_chooser.choose(data)
 ```
@@ -74,7 +88,7 @@ where `example_choose.py` is calling `CmapChooser` and later saving the colormap
 
 ## Histogram Normalization
 
-This feature is intended to provide an easy way to instantly get a high-contrast image with little try-and-error fiddling around with the normalization. It works by constructing a normalization such that the pixel-values of the image are uniformly sampling the colorbar (this is done by calculating the CDF of pixel-values and using the CDF as the new normalization function). NOTE: While this process is deterministic, the resulting normalization is probably highly non-linear and its (puristic) scientific interpretation becomes hard. It should be used for illustrative and exploratory purposes.
+This feature is intended to provide an easy way to instantly get a high-contrast image with no try-and-error fiddling around with the normalization. It works by constructing a normalization such that the pixel-values of the image are uniformly sampling the colorbar (this is done by calculating the CDF of pixel-values and using the CDF as the new normalization function). NOTE: While this process is deterministic, the resulting normalization is probably highly non-linear and its (puristic) scientific interpretation becomes hard. It should be used for illustrative and exploratory purposes.
 
 Symmetric Histogram Normalization is not working right now.
 
