@@ -1,9 +1,7 @@
 import cmap_chooser
-import h5py
+import numpy
 
-sn = h5py.File("../data/image.hdf5", "r")
-data = sn["image"][:,:]
-sn.close()
+data = numpy.load("../data/image.npy")
 
 cmap, norm = cmap_chooser.choose(data)
 
