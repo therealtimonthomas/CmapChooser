@@ -17,7 +17,7 @@ You can then simply install the library into your current python enviroment via
 pip3 install .
 ```
 
-which will ensure that the required libraries (`numpy`, `matplotlib`, and `PySide6`) are also present and aviable in your current python enviroment; if not they are installed automatically. Note that the `PySide6` pack is not super leightweight: it consumes ~600Mb disk space on my machine - be aware of this if you are on a machine with tight quotas.
+which will ensure that the required libraries (`numpy`, `matplotlib`, and `PySide6`) are also present and available in your current python enviroment; if not they are installed automatically. Note that the `PySide6` pack is not super leightweight: it consumes ~600Mb disk space on my machine - be aware of this if you are on a machine with tight quotas.
 
 ## Supported Colormaps
 
