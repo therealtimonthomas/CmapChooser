@@ -64,7 +64,7 @@ with open("cmap_norm.pkl", "wb") as f:
     pickle.dump(norm, f)
 ```
 
-Both the colormap and the normalization can then be read via:
+Both the colormap and the normalization can then be read and used via:
 
 ```python
 import pickle
