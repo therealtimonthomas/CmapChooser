@@ -72,6 +72,7 @@ with open("cmap_norm.pkl", "rb") as f:
     cmap = pickle.load(cmap, f)
     norm = pickle.load(cmap, f)
 
+import matplotlib.pyplot as plt
 plt.imshow(data, cmap=cmap, norm=norm)
 plt.show()
 ```
